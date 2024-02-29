@@ -1,0 +1,25 @@
+﻿@model List<TestimonialViewModel>
+@{
+	ViewData["Title"] = "AddTestimonial";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Referans Ekleme Sayfası</h2>
+
+<form method="post">
+
+	<label>Görsel</label>
+	<input type="text" name="Image" class="form-control" />
+	<br/>
+	<label>Ad Soyad</label>
+	<input type="text" name="Name" class="form-control" />
+	<br/>
+	<label>Ünvan</label>
+	<input type="text" name="Title" class="form-control" />
+	<br />
+	<label>Açıklama</label>
+	<input type="text" name="Description" class="form-control" />
+	<br />
+	<button class="btn btn-primary">Referans Ekleme</button>
+</form>
+
