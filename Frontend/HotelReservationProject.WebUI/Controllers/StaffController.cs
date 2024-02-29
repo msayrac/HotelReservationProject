@@ -100,16 +100,5 @@ namespace HotelReservationProject.WebUI.Controllers
 			return View();
 		}
 
-
-
-
-
-
-
-
-
-
-
-
 	}
 }
