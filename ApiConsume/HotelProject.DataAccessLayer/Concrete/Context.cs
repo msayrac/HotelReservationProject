@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HotelProject.EntityLayer.Concrete;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelProject.DataAccessLayer.Concrete
 {
-	public class Context : DbContext
+	public class Context : IdentityDbContext<AppUser, AppRole, int>
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("server=msyc; initial catalog=ApiDb; integrated security=true; TrustServerCertificate=True");
 
 		}
-
 		public DbSet<Room> Rooms { get; set; }
 		public DbSet<Service> Services { get; set; }
 		public DbSet<Staff> Staffs { get; set; }
