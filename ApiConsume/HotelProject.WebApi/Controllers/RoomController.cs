@@ -57,12 +57,5 @@ namespace HotelProject.WebApi.Controllers
 		}
 
 
-
-
-
-
-
-
-
 	}
 }
