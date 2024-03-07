@@ -14,7 +14,6 @@ namespace HotelProject.DataAccessLayer.Concrete
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("server=msyc; initial catalog=ApiDb; integrated security=true; TrustServerCertificate=True");
-
 		}
 		public DbSet<Room> Rooms { get; set; }
 		public DbSet<Service> Services { get; set; }
@@ -22,7 +21,7 @@ namespace HotelProject.DataAccessLayer.Concrete
 		public DbSet<Subscribe> Subscribes { get; set; }
 		public DbSet<Testimonial> Testimonials { get; set; }
 		public DbSet<About> Abouts { get; set; }
-
+		public DbSet<Booking> Bookings { get; set; }
 
 
 
