@@ -32,14 +32,15 @@ namespace HotelReservationProject.WebUI.Controllers
 		public async Task<IActionResult> AddBooking(CreateBookingDto createBookingDto)
 		{
 			createBookingDto.Status = "Onay Bekliyor.";
-			createBookingDto.Description = "Test";
+			createBookingDto.Description = string.Empty;
+
 
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(createBookingDto);
 
 			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-			await client.PostAsync("http://localhost:33170/api/Booking", stringContent);
+			await client.PostAsync("http://localhost:33170/api/BookingApi", stringContent);
 
 			return RedirectToAction("Index", "Default");
 
