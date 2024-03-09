@@ -2,6 +2,7 @@
 using HotelReservationProject.WebUI.Dtos.ServiceDto;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
@@ -27,5 +28,41 @@ namespace HotelReservationProject.WebUI.Controllers
 			}
 			return View();
 		}
+
+
+		public async Task<IActionResult> ApprovedBooking(ApprovedBookingDto approvedBookingDto)
+		{
+			approvedBookingDto.Status = "Onaylandı";
+
+			var client = _httpClientFactory.CreateClient();
+			var jsonData = JsonConvert.SerializeObject(approvedBookingDto);
+
+			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+			var responseMessage = await client.PutAsync("http://localhost:33170/api/BookingApi/bbb", stringContent);
+
+
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	}
 }
