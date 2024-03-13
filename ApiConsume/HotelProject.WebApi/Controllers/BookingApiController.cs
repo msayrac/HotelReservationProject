@@ -30,7 +30,6 @@ namespace HotelProject.WebApi.Controllers
 		{
 			_bookingService.TInsert(booking);
 			return Ok();
-
 		}
 
 		[HttpDelete("{id}")]
