@@ -44,7 +44,6 @@ namespace HotelProject.WebApi.Controllers
 		}
 
 		[HttpPut]
-
 		public IActionResult UpdateRoom(UpdateRoomDto updateRoomDto)
 		{
 			if (!ModelState.IsValid)
