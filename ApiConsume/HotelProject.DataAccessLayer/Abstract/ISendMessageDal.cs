@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelProject.BusinessLayer.Abstract
+namespace HotelProject.DataAccessLayer.Abstract
 {
-	public interface IContactService:IGenericService<Contact>
+	public interface ISendMessageDal:IGenericDal<SendMessage>
 	{
+
 
 	}
 }
