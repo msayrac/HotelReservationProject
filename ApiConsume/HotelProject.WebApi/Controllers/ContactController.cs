@@ -33,6 +33,13 @@ namespace HotelProject.WebApi.Controllers
 			return Ok(values);
 		}
 
+		[HttpGet("{id}")]
+		public IActionResult GetSendMessage(int id)
+		{
+			var values = _contactService.TGetByID(id);
+			return Ok(values);
+		}
+
 
 
 
