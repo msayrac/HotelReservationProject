@@ -30,6 +30,21 @@ namespace HotelReservationProject.WebUI.Controllers
 			return View();
 		}
 
+		public async Task<IActionResult> SendBox()
+		{
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.GetAsync("http://localhost:33170/api/SendMessage");
+
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var values = JsonConvert.DeserializeObject<List<ResultSendBoxDto>>(jsonData);
+				return View(values);
+			}
+
+			return View();
+		}
+
 		[HttpGet]
 		public IActionResult AddSendMessage()
 		{
@@ -39,6 +54,10 @@ namespace HotelReservationProject.WebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddSendMessage(CreateSendMessage createSendMessage)
 		{
+			createSendMessage.SenderMail = "admin@gmail.com";
+			createSendMessage.SenderName = "admin";
+			createSendMessage.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(createSendMessage);
 
@@ -47,12 +66,10 @@ namespace HotelReservationProject.WebUI.Controllers
 			var responseMessage = await client.PostAsync("http://localhost:33170/api/SendMessage", stringContent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
-				return RedirectToAction("SendBox");
+				return RedirectToAction("Inbox");
 			}
 			return View();
 		}
-
-
 
 		public PartialViewResult SideBarAdminContactPartial()
 		{
@@ -63,6 +80,27 @@ namespace HotelReservationProject.WebUI.Controllers
 		{
 			return PartialView();
 		}
+
+
+		public IActionResult MessageDetails(int id)
+		{
+
+
+
+
+			return View();
+		}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
