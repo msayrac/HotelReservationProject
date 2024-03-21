@@ -1,5 +1,6 @@
 ﻿using HotelReservationProject.WebUI.Dtos.BookingDto;
 using HotelReservationProject.WebUI.Dtos.ContactDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -7,6 +8,7 @@ using System.Text;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+	[AllowAnonymous]
 	public class ContactController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

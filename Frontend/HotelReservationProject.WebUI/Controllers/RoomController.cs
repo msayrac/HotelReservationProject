@@ -2,6 +2,7 @@
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+
 	public class RoomController : Controller
 	{
 		public IActionResult Index()
