@@ -1,4 +1,6 @@
-﻿namespace HotelReservationProject.WebUI.Dtos.ContactDto
+﻿using HotelProject.EntityLayer.Concrete;
+
+namespace HotelReservationProject.WebUI.Dtos.ContactDto
 {
 	public class CreateContactDto
 	{
@@ -7,5 +9,8 @@
 		public string Subject { get; set; }
 		public string Message { get; set; }
 		public DateTime Date { get; set; }
+		public int MessageCategoryID { get; set; }
+
+
 	}
 }

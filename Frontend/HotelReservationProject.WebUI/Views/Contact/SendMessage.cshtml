@@ -32,7 +32,7 @@
 
 			<div class="col-md-6">
 				<div class="wow fadeInUp" data-wow-delay="0.2s">
-					
+
 					<form method="post" asp-action="SendMessage" asp-controller="Contact">
 						<div class="row g-3">
 							<div class="col-md-6">
@@ -49,9 +49,18 @@
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="text" class="form-control" id="subject" placeholder="Konu" name="Subject">
-									<label for="Subject">Konu</label>
+
+									@Html.DropDownListFor(x => x.MessageCategoryID, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
+
+									<label for="Subject">Konuyu Seçiniz</label>
 								</div>
+
+								<br />
+								<div class="form-floating">
+									<input type="text" class="form-control" id="subject" placeholder="Konu Başlığı" name="Subject">
+									<label for="Subject">Konu Başlığı Yazınız</label>
+								</div>
+
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
@@ -64,7 +73,7 @@
 							</div>
 						</div>
 					</form>
-			
+
 				</div>
 			</div>
 		</div>

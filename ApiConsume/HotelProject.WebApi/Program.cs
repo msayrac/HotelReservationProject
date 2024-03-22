@@ -43,6 +43,9 @@ builder.Services.AddScoped<ISendMessageService, SendMessageManager>();
 builder.Services.AddScoped<IGuestDal, EfGuestDal>();
 builder.Services.AddScoped<IGuestService, GuestManager>();
 
+builder.Services.AddScoped<IMessageCategoryDal, EfMessageCategoryDal>();
+builder.Services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
+
 builder.Services.AddAutoMapper(typeof(Program));
 
 
