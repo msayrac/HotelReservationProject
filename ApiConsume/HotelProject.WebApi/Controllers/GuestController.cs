@@ -10,7 +10,6 @@ namespace HotelProject.WebApi.Controllers
 	public class GuestController : ControllerBase
 	{
 		private readonly IGuestService _guestService;
-
 		public GuestController(IGuestService guestService)
 		{
 			_guestService = guestService;
@@ -55,19 +54,6 @@ namespace HotelProject.WebApi.Controllers
 			var values = _guestService.TGetByID(id);
 			return Ok(values);
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
 }

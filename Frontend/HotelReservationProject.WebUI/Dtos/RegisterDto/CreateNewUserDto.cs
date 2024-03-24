@@ -25,5 +25,6 @@ namespace HotelReservationProject.WebUI.Dtos.RegisterDto
 
 
 
+
 	}
 }

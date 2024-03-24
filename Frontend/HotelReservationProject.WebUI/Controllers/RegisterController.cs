@@ -36,7 +36,8 @@ namespace HotelReservationProject.WebUI.Controllers
 				Name = createNewUserDto.Name,
 				Email = createNewUserDto.Mail,
 				Surname = createNewUserDto.Surname,
-				UserName = createNewUserDto.Surname
+				UserName = createNewUserDto.Surname,
+				WorkLocationID = 1
 			};
 
 			var result = await _userManager.CreateAsync(appUser, createNewUserDto.Password);
@@ -47,19 +48,6 @@ namespace HotelReservationProject.WebUI.Controllers
 			}
 			return View();
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	}
 }
