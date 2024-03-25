@@ -1,16 +1,18 @@
-﻿using HotelReservationProject.WebUI.Dtos.RoomDto;
-using HotelReservationProject.WebUI.Models.Staff;
+﻿using HotelReservationProject.WebUI.Dtos.WorkLocationDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
-	public class AdminRoomController : Controller
+	[AllowAnonymous]
+	public class WorkLocationController : Controller
 	{
+
 		private readonly IHttpClientFactory _httpClientFactory;
 
-		public AdminRoomController(IHttpClientFactory httpClientFactory)
+		public WorkLocationController(IHttpClientFactory httpClientFactory)
 		{
 			_httpClientFactory = httpClientFactory;
 		}
@@ -18,12 +20,12 @@ namespace HotelReservationProject.WebUI.Controllers
 		public async Task<IActionResult> Index()
 		{
 			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("http://localhost:33170/api/Room");
+			var responseMessage = await client.GetAsync("http://localhost:33170/api/WorkLocation");
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultRoomDto>>(jsonData);
+				var values = JsonConvert.DeserializeObject<List<ResultWorkLocationDto>>(jsonData);
 				return View(values);
 			}
 
@@ -32,21 +34,21 @@ namespace HotelReservationProject.WebUI.Controllers
 
 
 		[HttpGet]
-		public IActionResult AddRoom()
+		public IActionResult AddWorkLocation()
 		{
 			return View();
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> AddRoom(CreateRoomDto createRoomDto)
+		public async Task<IActionResult> AddWorkLocation(CreateWorkLocationDto createWorkLocationDto)
 		{
 			var client = _httpClientFactory.CreateClient();
-			var jsonData = JsonConvert.SerializeObject(createRoomDto);
+			var jsonData = JsonConvert.SerializeObject(createWorkLocationDto);
 
 			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-			
 
-			var responseMessage = await client.PostAsync("http://localhost:33170/api/Room", stringContent);
+
+			var responseMessage = await client.PostAsync("http://localhost:33170/api/WorkLocation", stringContent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				return RedirectToAction("Index");
@@ -55,10 +57,10 @@ namespace HotelReservationProject.WebUI.Controllers
 		}
 
 
-		public async Task<IActionResult> DeleteRoom(int id)
+		public async Task<IActionResult> DeleteWorkLocation(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.DeleteAsync($"http://localhost:33170/api/Room/{id}");
+			var responseMessage = await client.DeleteAsync($"http://localhost:33170/api/WorkLocation/{id}");
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
@@ -69,30 +71,30 @@ namespace HotelReservationProject.WebUI.Controllers
 
 
 		[HttpGet]
-		public async Task<IActionResult> UpdateRoom(int id)
+		public async Task<IActionResult> UpdateWorkLocation(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
 
-			var responseMessage = await client.GetAsync($"http://localhost:33170/api/Room/{id}");
+			var responseMessage = await client.GetAsync($"http://localhost:33170/api/WorkLocation/{id}");
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<UpdateRoomDto>(jsonData);
+				var values = JsonConvert.DeserializeObject<UpdateWorkLocationDto>(jsonData);
 				return View(values);
 			}
 			return View();
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> UpdateRoom(UpdateRoomDto updateRoomDto)
+		public async Task<IActionResult> UpdateRoom(UpdateWorkLocationDto updateWorkLocationDto)
 		{
 			var client = _httpClientFactory.CreateClient();
 
-			var jsonData = JsonConvert.SerializeObject(updateRoomDto);
+			var jsonData = JsonConvert.SerializeObject(updateWorkLocationDto);
 			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 
-			var responseMessage = await client.PutAsync("http://localhost:33170/api/Room", stringContent);
+			var responseMessage = await client.PutAsync("http://localhost:33170/api/WorkLocation", stringContent);
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
