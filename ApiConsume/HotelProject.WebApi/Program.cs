@@ -49,6 +49,10 @@ builder.Services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
 builder.Services.AddScoped<IWorkLocationDal, EfWorkLocationDal>();
 builder.Services.AddScoped<IWorkLocationService, WorkLocationManager>();
 
+builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+
+
 
 
 builder.Services.AddAutoMapper(typeof(Program));
@@ -66,7 +70,14 @@ builder.Services.AddCors((opt =>
 
 
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options=>options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore);	
+
+
+
+
+
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
