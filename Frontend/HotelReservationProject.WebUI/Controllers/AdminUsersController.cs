@@ -59,11 +59,7 @@ namespace HotelReservationProject.WebUI.Controllers
 				var values = JsonConvert.DeserializeObject<List<ResultAppUserListDto>>(jsonData);
 				return View(values);
 			}
-
 			return View();
-
-
-
 		}
 
 
