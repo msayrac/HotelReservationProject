@@ -14,6 +14,9 @@ namespace HotelProject.BusinessLayer.Abstract
 
 		List<AppUser> TUsersListWithWorkLocations();
 
+		int TAppUserCount();
+
+
 
 	}
 }

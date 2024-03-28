@@ -1,10 +1,13 @@
 ﻿using HotelReservationProject.WebUI.Models.Mail;
 using MailKit.Net.Smtp;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MimeKit;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+	[AllowAnonymous]
+
 	public class AdminMailController : Controller
 	{
 

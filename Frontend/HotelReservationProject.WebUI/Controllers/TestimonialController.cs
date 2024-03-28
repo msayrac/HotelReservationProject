@@ -1,11 +1,14 @@
 ﻿using HotelReservationProject.WebUI.Models.Staff;
 using HotelReservationProject.WebUI.Models.Testimonial;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+	[AllowAnonymous]
+
 	public class TestimonialController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

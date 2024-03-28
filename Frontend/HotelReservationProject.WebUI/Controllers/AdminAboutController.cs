@@ -1,12 +1,14 @@
 ﻿using HotelReservationProject.WebUI.Dtos.AboutDto;
 using HotelReservationProject.WebUI.Dtos.BookingDto;
 using HotelReservationProject.WebUI.Models.Staff;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+	[AllowAnonymous]
 	public class AdminAboutController : Controller
 	{
 

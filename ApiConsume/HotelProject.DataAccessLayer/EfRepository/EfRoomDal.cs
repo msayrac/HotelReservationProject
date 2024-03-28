@@ -10,12 +10,18 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.DataAccessLayer.EfRepository
 {
-	public class EfRoomDal:GenericRepository<Room>, IRoomDal
+	public class EfRoomDal : GenericRepository<Room>, IRoomDal
 	{
-		public EfRoomDal(Context context):base(context)
+		public EfRoomDal(Context context) : base(context)
 		{
-				
+
 		}
 
+		public int RoomCount()
+		{
+			var context = new Context();
+			var value = context.Rooms.Count();
+			return value;
+		}
 	}
 }

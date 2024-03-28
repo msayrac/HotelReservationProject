@@ -38,5 +38,13 @@ namespace HotelProject.DataAccessLayer.EfRepository
 
 			context.SaveChanges();
 		}
+
+		public int GetBookingCount()
+		{
+			var context = new Context();
+			var value = context.Bookings.Count();
+			return value;
+
+		}
 	}
 }

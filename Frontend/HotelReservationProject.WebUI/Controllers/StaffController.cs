@@ -1,11 +1,13 @@
 ﻿using System.Text;
 using HotelReservationProject.WebUI.Models.Staff;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace HotelReservationProject.WebUI.Controllers
 {
+	[AllowAnonymous]
 	public class StaffController : Controller
 	{
 		private readonly IHttpClientFactory _httpClientFactory;

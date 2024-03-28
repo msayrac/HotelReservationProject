@@ -44,5 +44,10 @@ namespace HotelProject.BusinessLayer.Concrete
 		{
 			return _roomDal.GetByID(id);
 		}
+
+		public int TRoomCount()
+		{
+			return _roomDal.RoomCount();
+		}
 	}
 }
