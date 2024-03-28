@@ -10,11 +10,11 @@ using HotelProject.EntityLayer.Concrete;
 
 namespace HotelProject.DataAccessLayer.EfRepository
 {
-	public class EfStaffDal:GenericRepository<Staff>,IStaffDal
+	public class EfStaffDal : GenericRepository<Staff>, IStaffDal
 	{
-		public EfStaffDal(Context context):base(context)
+		public EfStaffDal(Context context) : base(context)
 		{
-			
+
 		}
 
 		public int GetStaffCount()
@@ -23,6 +23,14 @@ namespace HotelProject.DataAccessLayer.EfRepository
 			var value = context.Staffs.Count();
 			return value;
 
+		}
+
+		public List<Staff> Last4Staff()
+		{
+			using var context = new Context();
+			var values = context.Staffs.OrderByDescending(x => x.StaffID).Take(4).ToList();
+
+			return values;
 		}
 	}
 }

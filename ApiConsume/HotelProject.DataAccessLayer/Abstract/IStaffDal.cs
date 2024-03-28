@@ -12,6 +12,8 @@ namespace HotelProject.DataAccessLayer.Abstract
 
 		int GetStaffCount();
 
+		List<Staff> Last4Staff();
+
 
 	}
 }
