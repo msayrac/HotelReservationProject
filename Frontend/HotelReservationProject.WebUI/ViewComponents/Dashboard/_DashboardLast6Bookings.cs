@@ -1,18 +1,15 @@
 ﻿using HotelReservationProject.WebUI.Dtos.BookingDto;
-using HotelReservationProject.WebUI.Dtos.GuestDto;
 using HotelReservationProject.WebUI.Dtos.StaffDto;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace HotelReservationProject.WebUI.ViewComponents.Dashboard
 {
-	[AllowAnonymous]
-	public class _DashboardLast4StaffList : ViewComponent
+	public class _DashboardLast6Bookings:ViewComponent
 	{
 		private readonly IHttpClientFactory _httpClientFactory;
 
-		public _DashboardLast4StaffList(IHttpClientFactory httpClientFactory)
+		public _DashboardLast6Bookings(IHttpClientFactory httpClientFactory)
 		{
 			_httpClientFactory = httpClientFactory;
 		}
@@ -20,12 +17,12 @@ namespace HotelReservationProject.WebUI.ViewComponents.Dashboard
 		public async Task<IViewComponentResult> InvokeAsync()
 		{
 			var client = _httpClientFactory.CreateClient();
-			var responseMessage = await client.GetAsync("http://localhost:33170/api/Staff/Last4Staff");
+			var responseMessage = await client.GetAsync("http://localhost:33170/api/BookingApi/Last6Booking");
 
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<List<ResultLast4StaffDto>>(jsonData);
+				var values = JsonConvert.DeserializeObject<List<ResultLast6BookingDto>>(jsonData);
 				return View(values);
 			}
 
