@@ -60,6 +60,16 @@ namespace HotelProject.DataAccessLayer.EfRepository
 			context.SaveChanges();
 		}
 
+		public void BookingStatusChangeWait(int id)
+		{
+			var context = new Context();
+
+			var values = context.Bookings.Find(id);
+
+			values.Status = "Müsteri Aranacak";
+			context.SaveChanges();
+		}
+
 		public int GetBookingCount()
 		{
 			var context = new Context();
